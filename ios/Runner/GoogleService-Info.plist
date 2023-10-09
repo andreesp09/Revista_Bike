@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>66867026845-l7frgucms0ih42u6d59elfphu8h1ljbk.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.66867026845-l7frgucms0ih42u6d59elfphu8h1ljbk</string>
+	<key>API_KEY</key>
+	<string>AIzaSyACBgblBSNu7vnFsIcQNBpN2_f5WbCj-Ao</string>
+	<key>GCM_SENDER_ID</key>
+	<string>66867026845</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.revistabikeApp</string>
+	<key>PROJECT_ID</key>
+	<string>revistabike-69c6d</string>
+	<key>STORAGE_BUCKET</key>
+	<string>revistabike-69c6d.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:66867026845:ios:eed52681d1ab0f34a0ed74</string>
+	<key>DATABASE_URL</key>
+	<string>https://revistabike-69c6d-default-rtdb.firebaseio.com</string>
+</dict>
+</plist>

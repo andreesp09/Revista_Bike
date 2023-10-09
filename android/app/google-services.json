@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "66867026845",
+    "firebase_url": "https://revistabike-69c6d-default-rtdb.firebaseio.com",
+    "project_id": "revistabike-69c6d",
+    "storage_bucket": "revistabike-69c6d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:66867026845:android:db51fd85f7a10bf8a0ed74",
+        "android_client_info": {
+          "package_name": "com.example.revistabike_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "66867026845-aptd5t4l33jaiqr5tugtjsadindbbb0u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKbulsX7CPD9uZPqX7HzhsemmMq8XbxqM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "66867026845-aptd5t4l33jaiqr5tugtjsadindbbb0u.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "66867026845-54s3t9bi34rm8s26qjsv4qs7n835a8lf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.revistabikeApp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
