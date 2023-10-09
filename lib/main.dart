@@ -25,6 +25,7 @@ class RevistaBikeApp extends StatelessWidget {
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: AppTheme().getTheme(),
+        routerConfig: appRouter,
       ),
     );
   }
