@@ -1,17 +1,29 @@
 {
     "cSpell.words": [
+        "appbar",
+        "autoplay",
+        "Bezier",
         "castea",
         "Categoria",
         "Configuracion",
+        "controll",
         "datasource",
         "datasources",
         "Edicion",
+        "Elevetion",
+        "Eventby",
         "firestore",
+        "informacion",
         "latlong",
         "Locacion",
+        "mapbox",
         "pdfviewer",
         "revistabike",
+        "riverpods",
+        "semicirculo",
         "skeletonizer",
-        "syncfusion"
+        "syncfusion",
+        "unfocus",
+        "vsync"
     ]
 }
