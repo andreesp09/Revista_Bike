@@ -33,68 +33,72 @@ class ComingEventCard extends ConsumerWidget {
           width: pWidth,
           height: pHeight,
           decoration: BoxDecoration(
-              border: Border.all(width: 2, color: theme.primary),
+              border: Border.all(width: 1, color: theme.primary),
               borderRadius: const BorderRadius.all(Radius.circular(10))),
-          child: Column(
-            children: [
-              //!Widget referente a la imagen en la tarjeta de próximos eventos
-              SizedBox(
-                width: pWidth,
-                height: pHeight * 0.3,
-                child: CustomCachedNetworkImage(
-                  pImagePath: modalities
-                      .firstWhere(
-                          ((modality) => pEvent.modality == modality.name))
-                      .imagePath!,
+          child: Material(
+            elevation: pElevetion,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            child: Column(
+              children: [
+                //!Widget referente a la imagen en la tarjeta de próximos eventos
+                SizedBox(
+                  width: pWidth,
+                  height: pHeight * 0.3,
+                  child: CustomCachedNetworkImage(
+                    pImagePath: modalities
+                        .firstWhere(
+                            ((modality) => pEvent.modality == modality.name))
+                        .imagePath!,
+                  ),
                 ),
-              ),
 
-              //!Widget referente al titulo  de la tarjeta de próximos eventos
-              SizedBox(
-                width: pWidth,
-                height: pHeight * 0.3,
-                child: CustomAutoSizeText(
-                    pPadding: 8,
-                    pText: pEvent.name,
+                //!Widget referente al titulo  de la tarjeta de próximos eventos
+                SizedBox(
+                  width: pWidth,
+                  height: pHeight * 0.3,
+                  child: CustomAutoSizeText(
+                      pPadding: 8,
+                      pText: pEvent.name,
+                      pTextStyle: KCustomTextStyle.kSemiBold(
+                          context, 25, theme.primary),
+                      pWidth: pWidth,
+                      pHeight: pHeight * 0.3),
+                ),
+
+                //!Widget referente al botón de la tarjeta de próximos eventos
+                CustomButton(
+                    pOnTap: () {
+                      ref.read(selectedModalityProvider.notifier).update(
+                          (state) => modalities.firstWhere(((modality) =>
+                              pEvent.modality == modality.name)));
+
+                      ref.read(filterEventsProvider.notifier).update((state) =>
+                          events
+                              .where((event) =>
+                                  event.modality ==
+                                      modalities
+                                          .firstWhere(((modality) =>
+                                              pEvent.modality == modality.name))
+                                          .name &&
+                                  event.isImportanEvent == true)
+                              .toList());
+
+                      ref
+                          .read(selectedEventProvider.notifier)
+                          .update((state) => pEvent);
+                      ref
+                          .read(eventViewSelectedProvider.notifier)
+                          .update((state) => 3);
+                    },
+                    pText: "Ver evento",
+                    pWidth: pWidth * 0.8,
+                    pHeight: pHeight * 0.15,
+                    pButtonColor: theme.primary,
+                    pBorderColor: theme.primary,
                     pTextStyle:
-                        KCustomTextStyle.kSemiBold(context, 25, theme.primary),
-                    pWidth: pWidth,
-                    pHeight: pHeight * 0.3),
-              ),
-
-              //!Widget referente al botón de la tarjeta de próximos eventos
-              CustomButton(
-                  pOnTap: () {
-                    ref.read(selectedModalityProvider.notifier).update(
-                        (state) => modalities.firstWhere(
-                            ((modality) => pEvent.modality == modality.name)));
-
-                    ref.read(filterEventsProvider.notifier).update((state) =>
-                        events
-                            .where((event) =>
-                                event.modality ==
-                                    modalities
-                                        .firstWhere(((modality) =>
-                                            pEvent.modality == modality.name))
-                                        .name &&
-                                event.isImportanEvent == true)
-                            .toList());
-
-                    ref
-                        .read(selectedEventProvider.notifier)
-                        .update((state) => pEvent);
-                    ref
-                        .read(eventViewSelectedProvider.notifier)
-                        .update((state) => 3);
-                  },
-                  pText: "Ver evento",
-                  pWidth: pWidth * 0.8,
-                  pHeight: pHeight * 0.15,
-                  pButtonColor: theme.primary,
-                  pBorderColor: theme.primary,
-                  pTextStyle:
-                      KCustomTextStyle.kMedium(context, 22, Colors.white))
-            ],
+                        KCustomTextStyle.kMedium(context, 22, Colors.white))
+              ],
+            ),
           )),
     );
   }

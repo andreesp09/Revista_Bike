@@ -43,97 +43,54 @@ class CustomCard extends StatelessWidget {
           decoration: BoxDecoration(
               border: Border.all(width: 2, color: theme.primary),
               borderRadius: const BorderRadius.all(Radius.circular(10))),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              //!Widget referente al titulo  de la tarjeta de próximos eventos
-              SizedBox(
-                width: pTittleWidth,
-                height: pTittleHeight,
-                child: CustomAutoSizeText(
-                    pPadding: 8,
-                    pText: pInfoCard.name,
-                    pTextStyle:
-                        KCustomTextStyle.kSemiBold(context, 25, theme.primary),
-                    pWidth: pWidth,
-                    pHeight: pHeight * 0.3),
-              ),
-
-              //!Widget referente a la imagen en la tarjeta de próximos eventos
-              SizedBox(
-                width: pImageWidth,
-                height: pImageHeight,
-                child: CustomCachedNetworkImage(
-                  pImagePath: pInfoCard.imagePath,
+          child: Material(
+            elevation: pElevetion,
+            borderRadius: const BorderRadius.all(Radius.circular(10)),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                //!Widget referente al titulo  de la tarjeta de próximos eventos
+                SizedBox(
+                  width: pTittleWidth,
+                  height: pTittleHeight,
+                  child: CustomAutoSizeText(
+                      pPadding: 8,
+                      pText: pInfoCard.name,
+                      pTextStyle: KCustomTextStyle.kSemiBold(
+                          context, 25, theme.primary),
+                      pWidth: pWidth,
+                      pHeight: pHeight * 0.3),
                 ),
-              ),
-              //!Widget referente al botón de la tarjeta de próximos eventos
-              CustomButton(
-                  pOnTap: () async {
-                    FocusScope.of(context).unfocus();
-                    if (isKeyboardVisible) {
-                      await KeyboardVisibilityController()
-                          .onChange
-                          .firstWhere((bool visible) => !visible);
-                    }
-                    pOnTap(pInfoCard);
-                  },
-                  pText: pTittleButton,
-                  pWidth: pButtonWidth,
-                  pHeight: pButtonHeight,
-                  pButtonColor: theme.primary,
-                  pBorderColor: theme.primary,
-                  pTextStyle:
-                      KCustomTextStyle.kMedium(context, 22, Colors.white))
-            ],
-          ));
 
-      // Card(
-      //   elevation: pElevetion,
-      //   child: Column(children: [
-      //     Stack(
-      //       children: [
-      //         Image.asset(
-      //           RandomFondoImage().returnFondoImage(pIndex),
-      //           fit: BoxFit.fill,
-      //           width: pTittleWidth,
-      //           height: pTittleHeight,
-      //         ),
-      //         CustomAutoSizeText(
-      //             pPadding: 8,
-      //             pText: pInfoCard.name,
-      //             pTextStyle:
-      //                 KCustomTextStyle.kSemiBold(context, 22, Colors.black),
-      //             pWidth: pTittleWidth,
-      //             pHeight: pTittleHeight),
-      //       ],
-      //     ),
-      //     SizedBox(
-      //         width: pImageWidth,
-      //         height: pImageHeight,
-      //         child: CustomCachedNetworkImage(pImagePath: pInfoCard.imagePath)),
-      //     SizedBox(height: pTittleHeight * 0.1),
-      //     CustomButton(
-      //       pText: pTittleButton,
-      //       pTextStyle: KCustomTextStyle.kLight(context, 35, theme.background),
-      //       pOnTap: () async {
-      //         FocusScope.of(context).unfocus();
-      //         if (isKeyboardVisible) {
-      //           await KeyboardVisibilityController()
-      //               .onChange
-      //               .firstWhere((bool visible) => !visible);
-      //         }
-      //         pOnTap(pInfoCard);
-      //       },
-      //       pWidth: pButtonWidth,
-      //       pHeight: pButtonHeight,
-      //       pButtonColor: theme.primary,
-      //       pTextColor: theme.background,
-      //       pBorderColor: theme.background,
-      //       pRadius: 10,
-      //     )
-      //   ]),
-      // );
+                //!Widget referente a la imagen en la tarjeta de próximos eventos
+                SizedBox(
+                  width: pImageWidth,
+                  height: pImageHeight,
+                  child: CustomCachedNetworkImage(
+                    pImagePath: pInfoCard.imagePath,
+                  ),
+                ),
+                //!Widget referente al botón de la tarjeta de próximos eventos
+                CustomButton(
+                    pOnTap: () async {
+                      FocusScope.of(context).unfocus();
+                      if (isKeyboardVisible) {
+                        await KeyboardVisibilityController()
+                            .onChange
+                            .firstWhere((bool visible) => !visible);
+                      }
+                      pOnTap(pInfoCard);
+                    },
+                    pText: pTittleButton,
+                    pWidth: pButtonWidth,
+                    pHeight: pButtonHeight,
+                    pButtonColor: theme.primary,
+                    pBorderColor: theme.primary,
+                    pTextStyle:
+                        KCustomTextStyle.kMedium(context, 22, Colors.white))
+              ],
+            ),
+          ));
     });
   }
 }
