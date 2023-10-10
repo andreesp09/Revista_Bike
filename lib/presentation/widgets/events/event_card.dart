@@ -5,7 +5,7 @@ import 'package:revistabike_app/domain/entities/00-entities.dart';
 import 'package:revistabike_app/presentation/riverpods/00-riverpod.dart';
 import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
 
-class ComingEventCard extends StatelessWidget {
+class ComingEventCard extends ConsumerWidget {
   const ComingEventCard({
     super.key,
     required this.pWidth,
@@ -23,116 +23,79 @@ class ComingEventCard extends StatelessWidget {
   final int pIndex;
   final Event pEvent;
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ColorScheme theme = Theme.of(context).colorScheme;
+    final List<Modality> modalities = ref.watch(modalitiesProvider);
+    final List<Event> events = ref.watch(eventsProvider);
     return Padding(
       padding: EdgeInsets.all(pPadding),
-      child: Card(
-        elevation: pElevetion,
-        child: Column(children: [
-          SizedBox(
-            width: pWidth,
-            height: pHeight * 0.25,
-            child: _TittleContainer(
-                pIndex: pIndex,
-                pEvent: pEvent,
-                theme: theme,
-                pWidth: pWidth,
-                pHeight: pHeight),
-          ),
-          Expanded(
-              child: _BodyContainer(
-                  pWidth: pWidth,
-                  pHeight: pHeight,
-                  pEvent: pEvent,
-                  theme: theme))
-        ]),
-      ),
-    );
-  }
-}
+      child: Container(
+          width: pWidth,
+          height: pHeight,
+          decoration: BoxDecoration(
+              border: Border.all(width: 2, color: theme.primary),
+              borderRadius: const BorderRadius.all(Radius.circular(10))),
+          child: Column(
+            children: [
+              //!Widget referente a la imagen en la tarjeta de próximos eventos
+              SizedBox(
+                width: pWidth,
+                height: pHeight * 0.3,
+                child: CustomCachedNetworkImage(
+                  pImagePath: modalities
+                      .firstWhere(
+                          ((modality) => pEvent.modality == modality.name))
+                      .imagePath!,
+                ),
+              ),
 
-class _BodyContainer extends StatelessWidget {
-  const _BodyContainer({
-    required this.pWidth,
-    required this.pHeight,
-    required this.pEvent,
-    required this.theme,
-  });
+              //!Widget referente al titulo  de la tarjeta de próximos eventos
+              SizedBox(
+                width: pWidth,
+                height: pHeight * 0.3,
+                child: CustomAutoSizeText(
+                    pPadding: 8,
+                    pText: pEvent.name,
+                    pTextStyle:
+                        KCustomTextStyle.kSemiBold(context, 25, theme.primary),
+                    pWidth: pWidth,
+                    pHeight: pHeight * 0.3),
+              ),
 
-  final double pWidth;
-  final double pHeight;
-  final Event pEvent;
-  final ColorScheme theme;
+              //!Widget referente al botón de la tarjeta de próximos eventos
+              CustomButton(
+                  pOnTap: () {
+                    ref.read(selectedModalityProvider.notifier).update(
+                        (state) => modalities.firstWhere(
+                            ((modality) => pEvent.modality == modality.name)));
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(children: [
-      SizedBox(
-        width: pWidth * 0.5,
-        height: pHeight,
-        child: CustomCachedNetworkImage(pImagePath: pEvent.imagePath),
-      ),
-      Column(
-        children: [
-          CustomAutoSizeText(
-              pPadding: 0,
-              pText: ParseDate().parseFechaDia(pEvent.startDate.toString()),
-              pTextStyle:
-                  KCustomTextStyle.kSemiBold(context, 20, theme.primary),
-              pWidth: pWidth * 0.5,
-              pHeight: (pHeight * 0.43) / 3),
-          CustomAutoSizeText(
-              pPadding: 0,
-              pText: ParseDate().parseFechaMes(pEvent.startDate.toString()),
-              pTextStyle:
-                  KCustomTextStyle.kSemiBold(context, 20, theme.primary),
-              pWidth: pWidth * 0.5,
-              pHeight: (pHeight * 0.45) / 3),
-          CustomAutoSizeText(
-              pPadding: 0,
-              pText: ParseDate().parseFechaAnnio(pEvent.startDate.toString()),
-              pTextStyle:
-                  KCustomTextStyle.kSemiBold(context, 20, theme.primary),
-              pWidth: pWidth * 0.5,
-              pHeight: (pHeight * 0.45) / 3),
-        ],
-      )
-    ]);
-  }
-}
+                    ref.read(filterEventsProvider.notifier).update((state) =>
+                        events
+                            .where((event) =>
+                                event.modality ==
+                                    modalities
+                                        .firstWhere(((modality) =>
+                                            pEvent.modality == modality.name))
+                                        .name &&
+                                event.isImportanEvent == true)
+                            .toList());
 
-class _TittleContainer extends StatelessWidget {
-  const _TittleContainer({
-    required this.pIndex,
-    required this.pEvent,
-    required this.theme,
-    required this.pWidth,
-    required this.pHeight,
-  });
-
-  final int pIndex;
-  final Event pEvent;
-  final ColorScheme theme;
-  final double pWidth;
-  final double pHeight;
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        Image.asset(
-          RandomFondoImage().returnFondoImage(pIndex),
-          fit: BoxFit.fill,
-        ),
-        CustomAutoSizeText(
-            pPadding: 8,
-            pText: pEvent.name,
-            pTextStyle: KCustomTextStyle.kSemiBold(context, 25, Colors.black),
-            pWidth: pWidth,
-            pHeight: pHeight * 0.3),
-      ],
+                    ref
+                        .read(selectedEventProvider.notifier)
+                        .update((state) => pEvent);
+                    ref
+                        .read(eventViewSelectedProvider.notifier)
+                        .update((state) => 3);
+                  },
+                  pText: "Ver evento",
+                  pWidth: pWidth * 0.8,
+                  pHeight: pHeight * 0.15,
+                  pButtonColor: theme.primary,
+                  pBorderColor: theme.primary,
+                  pTextStyle:
+                      KCustomTextStyle.kMedium(context, 22, Colors.white))
+            ],
+          )),
     );
   }
 }

@@ -105,6 +105,8 @@ class PrincipalMagazineScreenState
                   pIndex: index,
                   pOnTap: selectMagazine,
                   pTittleButton: 'Ver revista',
+                  pWidth: maxSizePhone.maxWidth,
+                  pHeight: maxSizePhone.maxWidth * 0.8,
                 );
               },
             ),

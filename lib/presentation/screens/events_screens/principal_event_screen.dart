@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:revistabike_app/config/00-configs.dart';
 import 'package:revistabike_app/domain/entities/00-entities.dart';
 import 'package:revistabike_app/presentation/riverpods/00-riverpod.dart';
-import 'package:revistabike_app/presentation/riverpods/config_providers/config_provider.dart';
 import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
 
 class PrincipalEventScreen extends ConsumerStatefulWidget {

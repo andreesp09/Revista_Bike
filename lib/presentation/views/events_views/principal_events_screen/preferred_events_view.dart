@@ -23,7 +23,9 @@ class PreferredEventsView extends ConsumerWidget {
     }
 
     void selectEvent(Event pSelectedEvent) {
-      ref.read(selectedEventProvider.notifier).update((state) => pSelectedEvent);
+      ref
+          .read(selectedEventProvider.notifier)
+          .update((state) => pSelectedEvent);
       ref.read(eventViewSelectedProvider.notifier).update((state) => 3);
     }
 
@@ -60,8 +62,10 @@ class PreferredEventsView extends ConsumerWidget {
                 index++;
                 return CustomCard(
                   pElevetion: 10,
-                  pTittleWidth: maxSizePhone.maxWidth * 0.5,
-                  pTittleHeight: maxSizePhone.maxHeight * 0.1,
+                  pWidth: maxSizePhone.maxWidth,
+                  pHeight: maxSizePhone.maxWidth * 0.8,
+                  pTittleWidth: maxSizePhone.maxWidth,
+                  pTittleHeight: maxSizePhone.maxWidth * 0.18,
                   pImageWidth: maxSizePhone.maxWidth * 0.5,
                   pImageHeight: maxSizePhone.maxHeight * 0.22,
                   pButtonWidth: maxSizePhone.maxWidth * 0.35,

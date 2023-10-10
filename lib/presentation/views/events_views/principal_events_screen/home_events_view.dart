@@ -55,8 +55,8 @@ class HomeEventsView extends ConsumerWidget {
             final Event comingEvent = comingEvents[index];
 
             return ComingEventCard(
-              pWidth: maxSizePhone.maxWidth * 0.50,
-              pHeight: maxSizePhone.maxHeight * 0.35,
+              pWidth: maxSizePhone.maxWidth * 0.5,
+              pHeight: maxSizePhone.maxHeight * 0.3,
               pPadding: maxSizePhone.maxHeight * 0.02,
               pElevetion: 8,
               pEvent: comingEvent,
