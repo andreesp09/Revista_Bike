@@ -43,7 +43,7 @@ class ComingEventCard extends ConsumerWidget {
                 //!Widget referente a la imagen en la tarjeta de próximos eventos
                 SizedBox(
                   width: pWidth,
-                  height: pHeight * 0.3,
+                  height: pHeight * 0.35,
                   child: CustomCachedNetworkImage(
                     pImagePath: modalities
                         .firstWhere(
@@ -55,7 +55,7 @@ class ComingEventCard extends ConsumerWidget {
                 //!Widget referente al titulo  de la tarjeta de próximos eventos
                 SizedBox(
                   width: pWidth,
-                  height: pHeight * 0.3,
+                  height: pHeight * 0.25,
                   child: CustomAutoSizeText(
                       pPadding: 8,
                       pText: pEvent.name,
