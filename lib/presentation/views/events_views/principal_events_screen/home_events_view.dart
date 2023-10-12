@@ -12,7 +12,7 @@ class HomeEventsView extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final ColorScheme theme = Theme.of(context).colorScheme;
     final MaxSizePhone maxSizePhone = ref.watch(maxConstrainsProvider);
-    final List<Event> comingEvents = ref.watch(commingEventsProvider);
+    final List<Event> comingEvents = ref.watch(comingEventsProvider);
 
     return Column(children: [
       //!Widget referente al appbar de la vista
@@ -45,26 +45,30 @@ class HomeEventsView extends ConsumerWidget {
           pTextAlign: TextAlign.start),
 
       //!Widget referente al listado de tarjetas con próximos eventos
-      SizedBox(
-        width: maxSizePhone.maxWidth,
-        height: maxSizePhone.maxHeight * 0.3,
-        child: ListView.builder(
-          itemCount: comingEvents.length,
-          scrollDirection: Axis.horizontal,
-          itemBuilder: (BuildContext context, int index) {
-            final Event comingEvent = comingEvents[index];
+      comingEvents.isEmpty
+          ? Container()
+          : SizedBox(
+              width: maxSizePhone.maxWidth,
+              height: maxSizePhone.maxHeight * 0.3,
+              child: ListView.builder(
+                itemCount: comingEvents.length,
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (BuildContext context, int index) {
+                  final Event comingEvent = comingEvents[index];
 
-            return ComingEventCard(
-              pWidth: maxSizePhone.maxWidth * 0.5,
-              pHeight: maxSizePhone.maxHeight * 0.3,
-              pPadding: maxSizePhone.maxHeight * 0.02,
-              pElevetion: 8,
-              pEvent: comingEvent,
-              pIndex: index,
-            );
-          },
-        ),
-      ),
+                  return FadeIn(
+                    child: ComingEventCard(
+                      pWidth: maxSizePhone.maxWidth * 0.5,
+                      pHeight: maxSizePhone.maxHeight * 0.3,
+                      pPadding: maxSizePhone.maxHeight * 0.02,
+                      pElevetion: 8,
+                      pEvent: comingEvent,
+                      pIndex: index,
+                    ),
+                  );
+                },
+              ),
+            ),
     ]);
   }
 }

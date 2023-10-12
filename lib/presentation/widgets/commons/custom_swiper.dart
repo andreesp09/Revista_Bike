@@ -85,29 +85,42 @@ class CustomModalitySwiper extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    SwiperController swiperController = SwiperController();
     final List<Modality> modalities = ref.watch(modalitiesProvider);
-    return Container(
-      padding: EdgeInsets.all(pPading ?? 0),
-      width: pWidth,
-      height: pHeight,
-      child: Swiper(
-        viewportFraction: 0.8,
-        scale: 0.8,
-        itemCount: modalities.length,
-        itemBuilder: (context, index) {
-          final Modality modality = modalities[index];
-          return CardSwiperModality(
-            pModality: modality,
-            pWidth: pWidth,
-            pHeight: pHeight,
-            pTextWidth: pTextWidth,
-            pTextHeight: pTextHeight,
-            pImageWidth: pImageWidth,
-            pImageHeight: pImageHeight,
-            pRadius: pRadius ?? 0,
+
+    return modalities.isEmpty
+        ? Container()
+        : Container(
+            padding: EdgeInsets.all(pPading ?? 0),
+            width: pWidth,
+            height: pHeight,
+            child: Swiper(
+              controller: swiperController,
+              viewportFraction: 0.8,
+              scale: 0.8,
+              itemCount: modalities.length,
+              onIndexChanged: (value) => {
+                ref.read(comingEventsProvider.notifier).update((state) => ref
+                    .watch(importantEventsProvider)
+                    .where((event) => event.modality == modalities[value].name)
+                    .toList())
+              },
+              itemBuilder: (context, index) {
+                final Modality modality = modalities[index];
+                return FadeIn(
+                  child: CardSwiperModality(
+                    pModality: modality,
+                    pWidth: pWidth,
+                    pHeight: pHeight,
+                    pTextWidth: pTextWidth,
+                    pTextHeight: pTextHeight,
+                    pImageWidth: pImageWidth,
+                    pImageHeight: pImageHeight,
+                    pRadius: pRadius ?? 0,
+                  ),
+                );
+              },
+            ),
           );
-        },
-      ),
-    );
   }
 }

@@ -32,3 +32,4 @@ export 'package:flutter_masonry_view/flutter_masonry_view.dart';
 export 'package:go_router/go_router.dart';
 export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 export 'package:skeletonizer/skeletonizer.dart';
+export 'package:animate_do/animate_do.dart';

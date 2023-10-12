@@ -9,7 +9,7 @@ final eventsProvider = StateProvider<List<Event>>((ref) => []);
 final importantEventsProvider = StateProvider<List<Event>>((ref) => []);
 
 //? Este provider guarda la lista de los eventos prioritarios
-final commingEventsProvider = StateProvider<List<Event>>((ref) => []);
+final comingEventsProvider = StateProvider<List<Event>>((ref) => []);
 
 //? Este provider guarda la lista de los eventos filtrados por el search en el customAppbar
 final filterEventsProvider = StateProvider<List<Event>>((ref) => []);

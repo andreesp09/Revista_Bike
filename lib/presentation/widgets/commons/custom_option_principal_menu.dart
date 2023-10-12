@@ -32,10 +32,13 @@ class CustomOptionPrincipalMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
     return Column(children: [
-      _ImageContainer(
-          imageUrl: pImageUrl,
-          pImageWidth: pImageWidth,
-          pImageHeight: pImageHeight),
+      GestureDetector(
+        onTap: () => pOnTap(),
+        child: _ImageContainer(
+            imageUrl: pImageUrl,
+            pImageWidth: pImageWidth,
+            pImageHeight: pImageHeight),
+      ),
       CustomAutoSizeText(
           pText: pSubTitle,
           pPadding: 8,

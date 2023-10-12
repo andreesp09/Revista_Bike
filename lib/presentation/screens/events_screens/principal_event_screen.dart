@@ -57,15 +57,17 @@ class PrincipalEventScreenState extends ConsumerState<PrincipalEventScreen> {
         events.where((event) => event.isImportanEvent == true).toList());
 
     final List<Event> importantEvents = ref.watch(importantEventsProvider);
+    final List<Event> modalitiesProvider = ref.watch(importantEventsProvider);
 
     if (importantEvents.length < 10) {
-      ref
-          .read(commingEventsProvider.notifier)
-          .update((state) => importantEvents);
+      ref.read(comingEventsProvider.notifier).update((state) => importantEvents
+          .where((event) => event.name == modalitiesProvider[0].name)
+          .toList());
     } else {
-      ref
-          .read(commingEventsProvider.notifier)
-          .update((state) => importantEvents.sublist(0, 10));
+      ref.read(comingEventsProvider.notifier).update((state) => importantEvents
+          .where((event) => event.name == modalitiesProvider[0].name)
+          .toList()
+          .sublist(0, 10));
     }
     return true;
   }
