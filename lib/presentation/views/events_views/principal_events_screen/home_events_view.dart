@@ -21,7 +21,28 @@ class HomeEventsView extends ConsumerWidget {
           pHeight: maxSizePhone.maxHeight * 0.08,
           pIconSize: maxSizePhone.maxHeight * 0.04,
           pColor: theme.primary,
-          pOnTap: context.pop),
+          pOnTap: () {
+            final List<Event> importantEvents =
+                ref.watch(importantEventsProvider);
+            final List<Event> modalitiesProvider =
+                ref.watch(importantEventsProvider);
+
+            if (importantEvents.length < 10) {
+              ref.read(comingEventsProvider.notifier).update((state) =>
+                  importantEvents
+                      .where(
+                          (event) => event.name == modalitiesProvider[0].name)
+                      .toList());
+            } else {
+              ref.read(comingEventsProvider.notifier).update((state) =>
+                  importantEvents
+                      .where(
+                          (event) => event.name == modalitiesProvider[0].name)
+                      .toList()
+                      .sublist(0, 10));
+            }
+            context.pop();
+          }),
 
       //!Widget referente a las opciones de modalidades en el app
       CustomModalitySwiper(
@@ -46,10 +67,13 @@ class HomeEventsView extends ConsumerWidget {
 
       //!Widget referente al listado de tarjetas con próximos eventos
       comingEvents.isEmpty
-          ? Container()
+          ? SizedBox(
+              width: maxSizePhone.maxWidth,
+              height: maxSizePhone.maxHeight * 0.35,
+            )
           : SizedBox(
               width: maxSizePhone.maxWidth,
-              height: maxSizePhone.maxHeight * 0.3,
+              height: maxSizePhone.maxHeight * 0.35,
               child: ListView.builder(
                 itemCount: comingEvents.length,
                 scrollDirection: Axis.horizontal,
@@ -59,7 +83,7 @@ class HomeEventsView extends ConsumerWidget {
                   return FadeIn(
                     child: ComingEventCard(
                       pWidth: maxSizePhone.maxWidth * 0.5,
-                      pHeight: maxSizePhone.maxHeight * 0.3,
+                      pHeight: maxSizePhone.maxHeight * 0.37,
                       pPadding: maxSizePhone.maxHeight * 0.02,
                       pElevetion: 8,
                       pEvent: comingEvent,

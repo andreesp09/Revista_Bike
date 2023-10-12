@@ -89,7 +89,10 @@ class CustomModalitySwiper extends ConsumerWidget {
     final List<Modality> modalities = ref.watch(modalitiesProvider);
 
     return modalities.isEmpty
-        ? Container()
+        ? SizedBox(
+            width: pWidth,
+            height: pHeight,
+          )
         : Container(
             padding: EdgeInsets.all(pPading ?? 0),
             width: pWidth,

@@ -98,9 +98,11 @@ class PrincipalEventScreenState extends ConsumerState<PrincipalEventScreen> {
           pWidth: maxSizePhone.maxWidth,
           pHeight: maxSizePhone.maxHeight * 0.12,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButtonLocation:
+            FloatingActionButtonLocation.miniStartDocked,
         floatingActionButton: eventViewSelected == 0
-            ? CustomButton(
+            ? CustomCircleButton(
+                pAllowsSplash: true,
                 pOnTap: () {
                   ref
                       .read(filterEventsProvider.notifier)
@@ -109,12 +111,29 @@ class PrincipalEventScreenState extends ConsumerState<PrincipalEventScreen> {
                       .read(eventViewSelectedProvider.notifier)
                       .update((state) => 1);
                 },
-                pText: "Ver calendario de eventos",
-                pWidth: maxSizePhone.maxWidth * 0.8,
-                pHeight: maxSizePhone.maxHeight * 0.05,
+                pIconData: Icons.calendar_month,
                 pButtonColor: theme.primary,
-                pBorderColor: theme.primary,
-                pTextStyle: KCustomTextStyle.kMedium(context, 22, Colors.white))
+                pRadius: 100,
+                pIconSize: maxSizePhone.maxWidth * 0.1,
+                pIconColor: theme.background,
+                pWidth: maxSizePhone.maxWidth * 0.17,
+                pHeight: maxSizePhone.maxWidth * 0.17)
+
+            // CustomButton(
+            //     pOnTap: () {
+            //       ref
+            //           .read(filterEventsProvider.notifier)
+            //           .update((state) => events);
+            //       ref
+            //           .read(eventViewSelectedProvider.notifier)
+            //           .update((state) => 1);
+            //     },
+            //     pText: "Ver calendario de eventos",
+            //     pWidth: maxSizePhone.maxWidth * 0.8,
+            //     pHeight: maxSizePhone.maxHeight * 0.05,
+            //     pButtonColor: theme.primary,
+            //     pBorderColor: theme.primary,
+            //     pTextStyle: KCustomTextStyle.kMedium(context, 22, Colors.white))
             : null,
         body: AppViewsRoutes().homeEventsViews()[eventViewSelected]);
   }

@@ -18,6 +18,21 @@ class ListAllEventsView extends ConsumerWidget {
       ref.read(filterEventsProvider.notifier).update((state) => []);
       ref.read(openSearchProvider.notifier).update((state) => false);
       ref.read(eventViewSelectedProvider.notifier).update((state) => 0);
+      final List<Event> importantEvents = ref.watch(importantEventsProvider);
+      final List<Event> modalitiesProvider = ref.watch(importantEventsProvider);
+
+      if (importantEvents.length < 10) {
+        ref.read(comingEventsProvider.notifier).update((state) =>
+            importantEvents
+                .where((event) => event.name == modalitiesProvider[0].name)
+                .toList());
+      } else {
+        ref.read(comingEventsProvider.notifier).update((state) =>
+            importantEvents
+                .where((event) => event.name == modalitiesProvider[0].name)
+                .toList()
+                .sublist(0, 10));
+      }
     }
 
     return GestureDetector(
@@ -37,10 +52,10 @@ class ListAllEventsView extends ConsumerWidget {
 
         //!Widget referente al texto de "Calendario de eventos"
         CustomAutoSizeText(
-            pText: 'Calendario de eventos',
+            pText: 'Calendario de eventos para todas las categorías',
             pTextStyle: KCustomTextStyle.kSemiBold(context, 55, theme.primary),
             pWidth: maxSizePhone.maxWidth,
-            pHeight: maxSizePhone.maxHeight * 0.06,
+            pHeight: maxSizePhone.maxHeight * 0.09,
             pPadding: 0),
 
         //!Widget referente al listado de tarjetas con todos eventos
