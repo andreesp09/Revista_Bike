@@ -22,7 +22,9 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       //! Se obtiene los datos de los eventos de la BD y se guardan en el provider
       loadEventsData(),
       //! Se obtiene los datos de los patrocinadores de la BD y se guardan en el provider
-      loadSponsorsAppData()
+      loadSponsorsAppData(),
+      //! Se obtiene los datos de las modalidades de la BD y se guardan en el provider
+      loadMagazinesData()
     ];
 
     List<bool> results = await Future.wait(futures);
@@ -81,6 +83,15 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
         await ref.read(sponsorRepositoryProvider).getAllSponsorsAvailable();
     ref.read(sponsorAppProvider.notifier).update((state) =>
         sponsorApp.where((sponsor) => sponsor.isSponsorApp == true).toList());
+    return true;
+  }
+
+  Future<bool> loadMagazinesData() async {
+    final List<Magazine> magazine =
+        await ref.read(magazineRepositoryProvider).getAllMagazinesAvailable();
+
+    ref.read(magazineProvider.notifier).update((state) => magazine);
+    ref.read(filterMagazineProvider.notifier).update((state) => magazine);
     return true;
   }
 

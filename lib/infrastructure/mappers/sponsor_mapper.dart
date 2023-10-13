@@ -7,5 +7,6 @@ class SponsorMapper {
       name: sponsorResponse.nombre,
       imagePath: sponsorResponse.imagePath,
       available: sponsorResponse.available,
-      isSponsorApp: sponsorResponse.isSponsorApp);
+      isSponsorApp: sponsorResponse.isSponsorApp,
+      imagePathIcon: sponsorResponse.imagePathIcon);
 }

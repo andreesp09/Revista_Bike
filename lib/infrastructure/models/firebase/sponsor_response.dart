@@ -6,6 +6,7 @@ class SponsorResponse {
   final bool isSponsorApp;
   final String id;
   final String nombre;
+  final String? imagePathIcon;
 
   SponsorResponse({
     this.imagePath,
@@ -13,6 +14,7 @@ class SponsorResponse {
     required this.isSponsorApp,
     required this.id,
     required this.nombre,
+    required this.imagePathIcon,
   });
 
   Map<String, dynamic> toJson() => {
@@ -30,6 +32,7 @@ class SponsorResponse {
         isSponsorApp: json["EsPatrocinadorApp"],
         id: json["Id"],
         nombre: json["Nombre"],
+        imagePathIcon: json["IconoImagePath"],
       );
 
   factory SponsorResponse.fromDocumentSnapshot(
@@ -40,5 +43,6 @@ class SponsorResponse {
         nombre: doc.data()!["Nombre"],
         imagePath: doc.data()?["ImagePath"] ?? '',
         isSponsorApp: doc.data()!["EsPatrocinadorApp"],
+        imagePathIcon: doc.data()!["IconoImagePath"] ?? '',
       );
 }

@@ -36,4 +36,14 @@ class EmptyEntities {
     return Magazine(
         edition: 0, name: '', pathMagazine: '', imagePath: '', idMagazine: '');
   }
+
+  Sponsor newEmptySponsor() {
+    return Sponsor(
+        idSponsor: '',
+        name: '',
+        imagePath: '',
+        available: false,
+        isSponsorApp: true,
+        imagePathIcon: '');
+  }
 }

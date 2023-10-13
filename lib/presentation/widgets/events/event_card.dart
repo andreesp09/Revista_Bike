@@ -49,6 +49,7 @@ class ComingEventCard extends ConsumerWidget {
                         .firstWhere(
                             ((modality) => pEvent.modality == modality.name))
                         .imagePath!,
+                    pRadiusTop: 10,
                   ),
                 ),
 
@@ -150,7 +151,8 @@ class ListAllEventCard extends ConsumerWidget {
 
             //!Widget referente de mostrar la imagen de la modalidad
             child: CustomCachedNetworkImage(
-                pRadius: 100,
+                pRadiusBottom: 100,
+                pRadiusTop: 100,
                 pImagePath: modalities
                     .firstWhere((modality) => modality.name == pEvent.modality)
                     .imagePath!),

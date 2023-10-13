@@ -4,15 +4,21 @@ import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
   const CustomCachedNetworkImage(
-      {super.key, required this.pImagePath, this.pRadius});
+      {super.key,
+      required this.pImagePath,
+      this.pRadiusTop,
+      this.pRadiusBottom});
 
   final String pImagePath;
-  final double? pRadius;
+  final double? pRadiusTop;
+  final double? pRadiusBottom;
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(pRadius ?? 0),
+      borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(pRadiusBottom ?? 0),
+          top: Radius.circular(pRadiusTop ?? 0)),
       child: CachedNetworkImage(
           imageUrl: pImagePath,
           fit: BoxFit.fill,

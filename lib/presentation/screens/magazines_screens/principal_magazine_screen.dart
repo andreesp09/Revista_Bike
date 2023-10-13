@@ -5,54 +5,12 @@ import 'package:revistabike_app/domain/entities/00-entities.dart';
 import 'package:revistabike_app/presentation/riverpods/00-riverpod.dart';
 import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
 
-class PrincipalMagazineScreen extends ConsumerStatefulWidget {
+class PrincipalMagazineScreen extends ConsumerWidget {
   static const name = 'principal-magazine-screen';
-  const PrincipalMagazineScreen({super.key});
+  const PrincipalMagazineScreen({Key? key}) : super(key: key);
 
   @override
-  PrincipalMagazineScreenState createState() => PrincipalMagazineScreenState();
-}
-
-class PrincipalMagazineScreenState
-    extends ConsumerState<PrincipalMagazineScreen> {
-  void loadData() async {
-    final dataState =
-        await Future(() => ref.watch(dataPrincipalMagazineScreenProvider));
-    if (dataState == DataState.isLoading) {
-      List<Future<bool>> futures = [
-        //! Se obtiene los datos de las modalidades de la BD y se guardan en el provider
-        loadMagazinesData()
-      ];
-
-      List<bool> results = await Future.wait(futures);
-
-      if (!results.contains(false)) {
-        ref
-            .read(dataPrincipalMagazineScreenProvider.notifier)
-            .update((state) => DataState.isLoaded);
-      } else {
-        //Todo:manejo de error implementar
-      }
-    }
-  }
-
-  Future<bool> loadMagazinesData() async {
-    final List<Magazine> magazine =
-        await ref.read(magazineRepositoryProvider).getAllMagazinesAvailable();
-
-    ref.read(magazineProvider.notifier).update((state) => magazine);
-    ref.read(filterMagazineProvider.notifier).update((state) => magazine);
-    return true;
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    loadData();
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final ColorScheme theme = Theme.of(context).colorScheme;
     final MaxSizePhone maxSizePhone = ref.watch(maxConstrainsProvider);
     final List<Magazine> filterMagazine = ref.watch(filterMagazineProvider);
@@ -71,7 +29,7 @@ class PrincipalMagazineScreenState
     void selectMagazine(Magazine pMagazine) {
       ref.read(selectedMagazineProvider.notifier).update((state) => pMagazine);
       context.push('/magazine');
-    }
+    } 
 
     return Scaffold(
         appBar: CustomSearchAppBar(

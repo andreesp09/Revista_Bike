@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:revistabike_app/presentation/screens/00-screens.dart';
+import 'package:revistabike_app/presentation/screens/sponsors_screens/principal_sponsors_screen.dart';
+import 'package:revistabike_app/presentation/screens/sponsors_screens/sponsor_screen.dart';
 
 final GoRouter appRouter = GoRouter(initialLocation: '/', routes: <RouteBase>[
   GoRoute(
@@ -50,6 +52,20 @@ final GoRouter appRouter = GoRouter(initialLocation: '/', routes: <RouteBase>[
     name: MagazineScreen.name,
     builder: (context, state) {
       return const MagazineScreen();
+    },
+  ),
+  GoRoute(
+    path: '/home-sponsor',
+    name: PrincipalSponsorScreen.name,
+    builder: (context, state) {
+      return const PrincipalSponsorScreen();
+    },
+  ),
+  GoRoute(
+    path: '/sponsor',
+    name: SponsorScreen.name,
+    builder: (context, state) {
+      return const SponsorScreen();
     },
   ),
 ]);

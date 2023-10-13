@@ -15,7 +15,7 @@ class MenuItemSponsorView extends ConsumerWidget {
       pImageUrl: sponsorItemMenuImage,
       pTitle: 'Patrocinadores',
       pSubTitle: 'Ingrese para ver información relevantes de patrocinadores',
-      pOnTap: () {},
+      pOnTap: () => context.push('/home-sponsor'),
       pImageWidth: maxSizePhone.maxWidth * 0.6,
       pImageHeight: maxSizePhone.maxHeight * 0.5,
       pTextWidth: maxSizePhone.maxWidth * 0.8,
