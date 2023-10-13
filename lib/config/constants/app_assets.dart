@@ -7,6 +7,7 @@ const String magazineItemMenuImage = 'assets/item_revista.png';
 //! Referente a las imágenes generales de la aplicación
 const String noImagePath = 'assets/No-image-found.jpg';
 const String revistaBikeLogo = 'assets/RevistaBike_Logo.png';
+const String noComingEventFind = 'assets/No-coming-events.jpg';
 
 //! Referente a las imágenes de fondos de colores de la aplicación
 const String fondoImageOne = 'assets/Fondos/Fondos-01.png';

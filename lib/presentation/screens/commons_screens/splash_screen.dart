@@ -17,6 +17,12 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
     List<Future<bool>> futures = [
       //! Se obtiene los datos de configuración de la BD y se guardan en el provider
       loadConfigDBData(),
+      //! Se obtiene los datos de las modalidades de la BD y se guardan en el provider
+      loadModalitiesData(),
+      //! Se obtiene los datos de los eventos de la BD y se guardan en el provider
+      loadEventsData(),
+      //! Se obtiene los datos de los patrocinadores de la BD y se guardan en el provider
+      loadSponsorsAppData()
     ];
 
     List<bool> results = await Future.wait(futures);
@@ -34,6 +40,47 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
   Future<bool> loadConfigDBData() async {
     final configDB = await ref.read(configRepositoryProvider).getBDConfig();
     ref.read(configDbProvider.notifier).update((state) => configDB);
+    return true;
+  }
+
+  Future<bool> loadModalitiesData() async {
+    final List<Modality> modalities =
+        await ref.read(modalityRepositoryProvider).getAllModalitiesAvailable();
+
+    ref.read(modalitiesProvider.notifier).update((state) => modalities);
+    return true;
+  }
+
+  Future<bool> loadEventsData() async {
+    final List<Event> events =
+        await ref.read(eventRepositoryProvider).getAllEventsAvailable();
+
+    ref.read(eventsProvider.notifier).update((state) => events);
+
+    ref.read(importantEventsProvider.notifier).update((state) =>
+        events.where((event) => event.isImportanEvent == true).toList());
+
+    final List<Event> importantEvents = ref.watch(importantEventsProvider);
+    final List<Event> modalitiesProvider = ref.watch(importantEventsProvider);
+
+    if (importantEvents.length < 10) {
+      ref.read(comingEventsProvider.notifier).update((state) => importantEvents
+          .where((event) => event.name == modalitiesProvider[0].name)
+          .toList());
+    } else {
+      ref.read(comingEventsProvider.notifier).update((state) => importantEvents
+          .where((event) => event.name == modalitiesProvider[0].name)
+          .toList()
+          .sublist(0, 10));
+    }
+    return true;
+  }
+
+  Future<bool> loadSponsorsAppData() async {
+    final List<Sponsor> sponsorApp =
+        await ref.read(sponsorRepositoryProvider).getAllSponsorsAvailable();
+    ref.read(sponsorAppProvider.notifier).update((state) =>
+        sponsorApp.where((sponsor) => sponsor.isSponsorApp == true).toList());
     return true;
   }
 

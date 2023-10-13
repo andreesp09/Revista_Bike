@@ -67,9 +67,20 @@ class HomeEventsView extends ConsumerWidget {
 
       //!Widget referente al listado de tarjetas con próximos eventos
       comingEvents.isEmpty
-          ? SizedBox(
-              width: maxSizePhone.maxWidth,
-              height: maxSizePhone.maxHeight * 0.35,
+          ? FadeIn(
+              child: Padding(
+                padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.05),
+                child: Container(
+                    width: maxSizePhone.maxWidth,
+                    height: maxSizePhone.maxHeight * 0.28,
+                    decoration: const BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: BorderRadius.all(Radius.circular(25))),
+                    child: Image.asset(
+                      noComingEventFind,
+                      fit: BoxFit.fill,
+                    )),
+              ),
             )
           : SizedBox(
               width: maxSizePhone.maxWidth,
