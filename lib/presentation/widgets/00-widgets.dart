@@ -21,10 +21,6 @@ export 'commons/custom_loading_animated.dart';
 export 'events/card_swiper_modalities.dart';
 export 'events/event_card.dart';
 
-//! Hace referencia a los widgets que se usan en las pantallas de patrocinadores
-
-export 'sponsors/sponsors_card.dart';
-
 //! Hace referencia a los paquetes de widgets que usa la aplicación
 
 export 'package:auto_size_text/auto_size_text.dart';

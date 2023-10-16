@@ -38,13 +38,18 @@ class PrincipalSponsorScreen extends ConsumerWidget {
                 index++;
                 return Padding(
                   padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.008),
-                  child: SponsorCard(
-                      pHeightCard: maxSizePhone.maxHeight * 0.08,
-                      pWidthCard: maxSizePhone.maxWidth,
-                      pRadius: maxSizePhone.maxHeight * 0.07,
-                      pIndex: index,
-                      pSponsor: sponsor,
-                      pOnTap: selectSponsor),
+                  child: InfoCard(
+                    pHeightCard: maxSizePhone.maxHeight * 0.075,
+                    pWidthCard: maxSizePhone.maxWidth,
+                    pRadius: maxSizePhone.maxHeight * 0.06,
+                    pIndex: index,
+                    pInfoCard: sponsor,
+                    pHeightButton: maxSizePhone.maxHeight,
+                    pWidthButton: maxSizePhone.maxWidth,
+                    pButtonText: "Ver patrocinador",
+                    pOnTap: selectSponsor,
+                    pIsSponsorCard: true,
+                  ),
                 );
               },
             ),

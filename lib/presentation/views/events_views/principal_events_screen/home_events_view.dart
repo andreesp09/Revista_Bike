@@ -70,16 +70,15 @@ class HomeEventsView extends ConsumerWidget {
           ? FadeIn(
               child: Padding(
                 padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.05),
-                child: Container(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    noComingEventFind,
+                    fit: BoxFit.fill,
                     width: maxSizePhone.maxWidth,
                     height: maxSizePhone.maxHeight * 0.28,
-                    decoration: const BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: BorderRadius.all(Radius.circular(25))),
-                    child: Image.asset(
-                      noComingEventFind,
-                      fit: BoxFit.fill,
-                    )),
+                  ),
+                ),
               ),
             )
           : SizedBox(

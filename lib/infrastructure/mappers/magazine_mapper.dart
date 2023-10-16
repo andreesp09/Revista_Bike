@@ -8,5 +8,5 @@ class MagazineMapper {
           name: 'Edición ${magazineResponse.edition}',
           edition: int.parse(magazineResponse.edition),
           pathMagazine: magazineResponse.pathMagazine,
-          imagePath: magazineResponse.pathPortada);
+          imagePathIcon: magazineResponse.pathPortada);
 }

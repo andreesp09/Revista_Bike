@@ -29,7 +29,7 @@ class PrincipalMagazineScreen extends ConsumerWidget {
     void selectMagazine(Magazine pMagazine) {
       ref.read(selectedMagazineProvider.notifier).update((state) => pMagazine);
       context.push('/magazine');
-    } 
+    }
 
     return Scaffold(
         appBar: CustomSearchAppBar(
@@ -49,22 +49,22 @@ class PrincipalMagazineScreen extends ConsumerWidget {
             child: MasonryView(
               listOfItem: filterMagazine,
               numberOfColumn: 2,
-              itemBuilder: (magazine) {
+              itemBuilder: (sponsor) {
                 index++;
-                return CustomCard(
-                  pElevetion: 10,
-                  pTittleWidth: maxSizePhone.maxWidth * 0.5,
-                  pTittleHeight: maxSizePhone.maxHeight * 0.06,
-                  pImageWidth: maxSizePhone.maxWidth * 0.5,
-                  pImageHeight: maxSizePhone.maxHeight * 0.22,
-                  pButtonWidth: maxSizePhone.maxWidth * 0.35,
-                  pButtonHeight: maxSizePhone.maxHeight * 0.06,
-                  pInfoCard: magazine,
-                  pIndex: index,
-                  pOnTap: selectMagazine,
-                  pTittleButton: 'Ver revista',
-                  pWidth: maxSizePhone.maxWidth,
-                  pHeight: maxSizePhone.maxWidth * 0.8,
+                return Padding(
+                  padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.008),
+                  child: InfoCard(
+                    pHeightCard: maxSizePhone.maxHeight * 0.065,
+                    pWidthCard: maxSizePhone.maxWidth,
+                    pRadius: maxSizePhone.maxHeight * 0.06,
+                    pIndex: index,
+                    pInfoCard: sponsor,
+                    pHeightButton: maxSizePhone.maxHeight,
+                    pWidthButton: maxSizePhone.maxWidth,
+                    pButtonText: "Ver edición",
+                    pOnTap: selectMagazine,
+                    pIsSponsorCard: false,
+                  ),
                 );
               },
             ),
