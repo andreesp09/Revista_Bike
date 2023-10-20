@@ -15,7 +15,7 @@ class MenuItemRoutesView extends ConsumerWidget {
       pImageUrl: routesItemMenuImage,
       pTitle: 'Rutas',
       pSubTitle: 'Ingrese para ver información relevantes de rutas',
-      pOnTap: () {},
+      pOnTap: () => context.push('/home-route'),
       pImageWidth: maxSizePhone.maxWidth * 0.6,
       pImageHeight: maxSizePhone.maxHeight * 0.5,
       pTextWidth: maxSizePhone.maxWidth * 0.8,

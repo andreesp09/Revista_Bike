@@ -20,5 +20,9 @@ export 'sponsors_providers/sponsor_repository_provider.dart';
 export 'magazines_providers/magazine_provider.dart';
 export 'magazines_providers/magazine_repository_provider.dart';
 
+//! Hace referencia a las exportaciones de los riverpods de rutas
+export 'routes_providers/route_provider.dart';
+export 'routes_providers/route_repository_provider.dart';
+
 //! Hace referencia a las exportaciones de los riverpods de widgets
 export 'widgets_providers/custom_search_appbar.dart';

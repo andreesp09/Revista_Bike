@@ -8,3 +8,4 @@ export 'modality.dart';
 export 'event.dart';
 export 'sponsor.dart';
 export 'magazine.dart';
+export 'routeApp.dart';

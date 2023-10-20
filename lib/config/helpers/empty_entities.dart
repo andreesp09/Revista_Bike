@@ -50,4 +50,12 @@ class EmptyEntities {
         isSponsorApp: true,
         imagePathIcon: '');
   }
+
+  RouteApp newEmptyRoute() {
+    return RouteApp(
+        idRoute: '',
+        available: false,
+        geoEndLocation: const GeoPoint(0, 0),
+        geoStartLocation: const GeoPoint(0, 0));
+  }
 }
