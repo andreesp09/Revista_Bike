@@ -1,12 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:revistabike_app/domain/entities/00-entities.dart';
 import 'package:revistabike_app/presentation/riverpods/00-riverpod.dart';
-import 'package:revistabike_app/presentation/screens/00-screens.dart';
 import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
-import 'package:revistabike_app/presentation/widgets/commons/custom_map.dart';
 
 class PrincipalRouteScreen extends ConsumerWidget {
   static const name = 'principal-route-screen';
