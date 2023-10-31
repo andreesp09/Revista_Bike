@@ -29,7 +29,7 @@ class MagazineScreenState extends ConsumerState<MagazineScreen> {
       body: Stack(
         children: [
           SfPdfViewer.network(
-            selectedMagazine.pathMagazine,
+            selectedMagazine.magazinePath,
             onDocumentLoaded: (details) {
               setState(() {
                 isLoading = false;

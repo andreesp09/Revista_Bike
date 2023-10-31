@@ -37,20 +37,22 @@ class PrincipalSponsorScreen extends ConsumerWidget {
               itemBuilder: (sponsor) {
                 index++;
                 return Padding(
-                  padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.008),
-                  child: InfoCard(
-                    pHeightCard: maxSizePhone.maxHeight * 0.075,
-                    pWidthCard: maxSizePhone.maxWidth,
-                    pRadius: maxSizePhone.maxHeight * 0.06,
-                    pIndex: index,
-                    pInfoCard: sponsor,
-                    pHeightButton: maxSizePhone.maxHeight,
-                    pWidthButton: maxSizePhone.maxWidth,
-                    pButtonText: "Ver patrocinador",
-                    pOnTap: selectSponsor,
-                    pIsSponsorCard: true,
-                  ),
-                );
+                    padding: EdgeInsets.all(maxSizePhone.maxHeight * 0.008),
+                    child: CustomCard(
+                      pElevetion: 10,
+                      pWidth: maxSizePhone.maxWidth,
+                      pHeight: maxSizePhone.maxHeight * 0.30,
+                      pTittleWidth: maxSizePhone.maxWidth,
+                      pTittleHeight: maxSizePhone.maxWidth * 0.2,
+                      pImageWidth: maxSizePhone.maxWidth * 0.5,
+                      pImageHeight: maxSizePhone.maxHeight * 0.1,
+                      pButtonWidth: maxSizePhone.maxWidth * 0.35,
+                      pButtonHeight: maxSizePhone.maxHeight * 0.06,
+                      pInfoCard: sponsor,
+                      pIndex: index,
+                      pOnTap: selectSponsor,
+                      pTittleButton: 'Ver evento',
+                    ));
               },
             ),
           ),

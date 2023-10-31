@@ -26,7 +26,9 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
       //! Se obtiene los datos de las revistas de la BD y se guardan en el provider
       loadMagazinesData(),
       //! Se obtiene los datos de las rutas de la BD y se guardan en el provider
-      loadRoutesData()
+      loadRoutesData(),
+      //! Se obtiene los datos de las videos de la BD y se guardan en el provider
+      loadVideosData()
     ];
 
     List<bool> results = await Future.wait(futures);
@@ -102,6 +104,14 @@ class SplashScreenState extends ConsumerState<SplashScreen> {
         await ref.read(routesRepositoryProvider).getAllRoutesAvailable();
 
     ref.read(routesProvider.notifier).update((state) => routes);
+    return true;
+  }
+
+  Future<bool> loadVideosData() async {
+    final List<Video> videos =
+        await ref.read(videoRepositoryProvider).getAllVideosAvailable();
+
+    ref.read(videosProvider.notifier).update((state) => videos);
     return true;
   }
 

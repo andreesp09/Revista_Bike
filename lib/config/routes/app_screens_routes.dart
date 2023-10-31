@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:revistabike_app/presentation/screens/00-screens.dart';
+import 'package:revistabike_app/presentation/screens/videos_screens/principal_videos_screen.dart';
 
 final GoRouter appRouter = GoRouter(initialLocation: '/', routes: <RouteBase>[
   GoRoute(
@@ -67,17 +68,24 @@ final GoRouter appRouter = GoRouter(initialLocation: '/', routes: <RouteBase>[
     },
   ),
   GoRoute(
-    path: '/home-route',
-    name: PrincipalRouteScreen.name,
+    path: '/home-videos',
+    name: PrincipalVideosScreen.name,
     builder: (context, state) {
-      return const PrincipalRouteScreen();
+      return const PrincipalVideosScreen();
     },
   ),
-  GoRoute(
-    path: '/route',
-    name: RouteScreen.name,
-    builder: (context, state) {
-      return const RouteScreen();
-    },
-  ),
+  // GoRoute(
+  //   path: '/home-route',
+  //   name: PrincipalRouteScreen.name,
+  //   builder: (context, state) {
+  //     return const PrincipalRouteScreen();
+  //   },
+  // ),
+  // GoRoute(
+  //   path: '/route',
+  //   name: RouteScreen.name,
+  //   builder: (context, state) {
+  //     return const RouteScreen();
+  //   },
+  // ),
 ]);

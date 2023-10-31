@@ -7,7 +7,8 @@ class AppViewsRoutes {
       const MenuItemEventsView(),
       const MenuMagazinesEventsView(),
       const MenuItemRoutesView(),
-      const MenuItemSponsorView()
+      const MenuItemSponsorView(),
+      const MenuItemVideosView()
     ];
   }
 

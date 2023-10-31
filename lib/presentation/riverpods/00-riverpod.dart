@@ -24,5 +24,9 @@ export 'magazines_providers/magazine_repository_provider.dart';
 export 'routes_providers/route_provider.dart';
 export 'routes_providers/route_repository_provider.dart';
 
+//! Hace referencia a las exportaciones de los riverpods de videos
+export 'videos_providers/videos_provider.dart';
+export 'videos_providers/videos_repository_provider.dart';
+
 //! Hace referencia a las exportaciones de los riverpods de widgets
 export 'widgets_providers/custom_search_appbar.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:revistabike_app/config/00-configs.dart';
 import 'package:revistabike_app/presentation/widgets/00-widgets.dart';
 
@@ -97,77 +96,3 @@ class CustomCard extends StatelessWidget {
 }
 
 
-
-class InfoCard extends ConsumerWidget {
-  const InfoCard({
-    Key? key,
-    required this.pHeightCard,
-    required this.pWidthCard,
-    required this.pHeightButton,
-    required this.pWidthButton,
-    required this.pRadius,
-    required this.pIndex,
-    required this.pButtonText,
-    required this.pIsSponsorCard,
-    this.pInfoCard,
-    required this.pOnTap,
-  }) : super(key: key);
-
-  final int pIndex;
-  final String pButtonText;
-  final dynamic pInfoCard;
-  final Function pOnTap;
-  final double pHeightCard;
-  final double pWidthCard;
-  final double pHeightButton;
-  final double pWidthButton;
-  final double pRadius;
-  final bool pIsSponsorCard;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final ColorScheme theme = Theme.of(context).colorScheme;
-    return Material(
-      borderRadius: const BorderRadius.vertical(bottom: Radius.circular(20)),
-      elevation: 8,
-      child: Container(
-        decoration: BoxDecoration(
-            border: Border.all(width: 1, color: theme.primary),
-            borderRadius:
-                const BorderRadius.vertical(bottom: Radius.circular(20))),
-        child: Column(children: [
-          pIsSponsorCard
-              ? CustomAutoSizeText(
-                  pText: pInfoCard.name,
-                  pTextStyle:
-                      KCustomTextStyle.kSemiBold(context, 25, theme.primary),
-                  pWidth: pWidthCard,
-                  pHeight: pHeightCard,
-                  pPadding: 5)
-              : Container(),
-          pIsSponsorCard
-              ? CircleAvatar(
-                  backgroundColor: theme.background,
-                  radius: pRadius,
-                  backgroundImage: NetworkImage(pInfoCard.imagePathIcon))
-              : CustomCachedNetworkImage(pImagePath: pInfoCard.imagePathIcon),
-          SizedBox(
-            height: pHeightCard * 0.1,
-          ),
-          CustomButton(
-            pText: pButtonText,
-            pTextStyle: KCustomTextStyle.kMedium(context, 20, Colors.white),
-            pOnTap: () => pOnTap(pInfoCard),
-            pWidth: pWidthButton * 0.35,
-            pHeight: pHeightButton * 0.06,
-            pButtonColor: theme.primary,
-            pRadius: 15,
-          ),
-          SizedBox(
-            height: pHeightCard * 0.1,
-          )
-        ]),
-      ),
-    );
-  }
-}

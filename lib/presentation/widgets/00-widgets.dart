@@ -23,6 +23,7 @@ export 'events/event_card.dart';
 
 //! Hace referencia a los paquetes de widgets que usa la aplicación
 
+export 'package:animate_do/animate_do.dart';
 export 'package:auto_size_text/auto_size_text.dart';
 export 'package:cached_network_image/cached_network_image.dart';
 export 'package:card_swiper/card_swiper.dart';
@@ -30,6 +31,6 @@ export 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 export 'package:flutter_map/flutter_map.dart';
 export 'package:flutter_masonry_view/flutter_masonry_view.dart';
 export 'package:go_router/go_router.dart';
-export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 export 'package:skeletonizer/skeletonizer.dart';
-export 'package:animate_do/animate_do.dart';
+export 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+export 'package:youtube_player_flutter/youtube_player_flutter.dart';

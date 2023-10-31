@@ -9,3 +9,4 @@ export 'event.dart';
 export 'sponsor.dart';
 export 'magazine.dart';
 export 'routeApp.dart';
+export 'video.dart';

@@ -6,6 +6,7 @@ export 'common_views/menu_options_screens/menu_item_events_view.dart';
 export 'common_views/menu_options_screens/menu_item_magazines_view.dart';
 export 'common_views/menu_options_screens/menu_item_routes_view.dart';
 export 'common_views/menu_options_screens/menu_item_sponsors_view.dart';
+export 'common_views/menu_options_screens/menu_item_videos_view.dart';
 
 //! Exportaciones de las views de la pantalla de eventos
 
