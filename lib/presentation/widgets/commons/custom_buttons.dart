@@ -10,21 +10,27 @@ class CustomButton extends StatelessWidget {
       required this.pWidth,
       required this.pHeight,
       this.pRadius,
+      this.pSpacerWidth,
+      this.pIconData,
       this.pElevation,
       this.pTextColor,
       this.pButtonColor,
-      this.pBorderColor});
+      this.pBorderColor,
+      this.pIconColor});
 
   final String pText;
   final TextStyle pTextStyle;
   final dynamic pOnTap;
   final double pWidth;
   final double pHeight;
+  final double? pSpacerWidth;
+  final IconData? pIconData;
   final double? pElevation;
   final double? pRadius;
   final Color? pTextColor;
   final Color? pButtonColor;
   final Color? pBorderColor;
+  final Color? pIconColor;
 
   @override
   Widget build(BuildContext context) {
@@ -46,13 +52,23 @@ class CustomButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(pRadius ?? 0),
             child: Padding(
               padding: const EdgeInsets.all(5.0),
-              child: Center(
-                child: AutoSizeText(
-                  pText,
-                  style: pTextStyle,
-                  maxLines: 2,
-                  textAlign: TextAlign.center,
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AutoSizeText(
+                    pText,
+                    style: pTextStyle,
+                    maxLines: 2,
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(width: pSpacerWidth),
+                  pIconData != null
+                      ? Icon(
+                          pIconData,
+                          color: pIconColor,
+                        )
+                      : Container()
+                ],
               ),
             ),
           )),

@@ -54,4 +54,8 @@ class EmptyEntities {
         geoEndLocation: const GeoPoint(0, 0),
         geoStartLocation: const GeoPoint(0, 0));
   }
+
+  Video newEmptyVideo() {
+    return Video(idVideo: '', videoName: '', videoPath: '', available: false);
+  }
 }

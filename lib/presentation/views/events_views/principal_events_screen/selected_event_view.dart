@@ -18,7 +18,8 @@ class SelectedEventsView extends ConsumerWidget {
       ref.read(eventViewSelectedProvider.notifier).update((state) => 2);
     }
 
-    return Column(children: [
+    return SingleChildScrollView(
+        child: Column(children: [
       //!Widget referente al appbar de la vista
       CustomAppBar(
           pWidth: maxSizePhone.maxWidth * 0.15,
@@ -49,7 +50,7 @@ class SelectedEventsView extends ConsumerWidget {
           pMaxHeight: maxSizePhone.maxHeight,
         ),
       )
-    ]);
+    ]));
   }
 }
 

@@ -139,7 +139,7 @@ class CustomSearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
         child:
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
           Padding(
-              padding: const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(8),
               child: CustomCircleButton(
                 pAllowsSplash: true,
                 pOnTap: () async {
@@ -165,7 +165,7 @@ class CustomSearchAppBar extends ConsumerWidget implements PreferredSizeWidget {
             children: [
               AnimatedContainer(
                   duration: Duration(milliseconds: pDuration),
-                  width: openSearch ? pWidth * 4 : 0,
+                  width: openSearch ? pWidth * 3.8 : 0,
                   height: pHeight,
                   child: TextField(
                     controller: _controller,

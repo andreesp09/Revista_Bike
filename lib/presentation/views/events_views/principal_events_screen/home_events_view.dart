@@ -14,7 +14,8 @@ class HomeEventsView extends ConsumerWidget {
     final MaxSizePhone maxSizePhone = ref.watch(maxConstrainsProvider);
     final List<Event> comingEvents = ref.watch(comingEventsProvider);
 
-    return Column(children: [
+    return SingleChildScrollView(
+        child: Column(children: [
       //!Widget referente al appbar de la vista
       CustomAppBar(
           pWidth: maxSizePhone.maxWidth * 0.15,
@@ -103,6 +104,6 @@ class HomeEventsView extends ConsumerWidget {
                 },
               ),
             ),
-    ]);
+    ]));
   }
 }

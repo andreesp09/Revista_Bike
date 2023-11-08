@@ -3,7 +3,7 @@ const String eventItemMenuImage = 'assets/item_eventos.png';
 const String sponsorItemMenuImage = 'assets/item_patrocinadores.png';
 const String routesItemMenuImage = 'assets/item_rutas.png';
 const String magazineItemMenuImage = 'assets/item_revista.png';
-const String videosItemMenuImage = 'assets/item_revista.png';
+const String videosItemMenuImage = 'assets/item_videos.png';
 
 //! Referente a las imágenes generales de la aplicación
 const String noImagePath = 'assets/No-image-found.jpg';

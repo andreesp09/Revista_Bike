@@ -51,7 +51,6 @@ class PrincipalSponsorScreen extends ConsumerWidget {
                       pInfoCard: sponsor,
                       pIndex: index,
                       pOnTap: selectSponsor,
-                      pTittleButton: 'Ver evento',
                     ));
               },
             ),

@@ -15,13 +15,11 @@ class CustomCard extends StatelessWidget {
       required this.pInfoCard,
       required this.pIndex,
       required this.pOnTap,
-      required this.pTittleButton,
       required this.pWidth,
       required this.pHeight});
 
   final double pWidth;
   final double pHeight;
-  final String pTittleButton;
   final double pElevetion;
   final double pTittleWidth;
   final double pTittleHeight;
@@ -72,27 +70,29 @@ class CustomCard extends StatelessWidget {
                 ),
                 //!Widget referente al botón de la tarjeta de próximos eventos
                 CustomButton(
-                    pOnTap: () async {
-                      FocusScope.of(context).unfocus();
-                      if (isKeyboardVisible) {
-                        await KeyboardVisibilityController()
-                            .onChange
-                            .firstWhere((bool visible) => !visible);
-                      }
-                      pOnTap(pInfoCard);
-                    },
-                    pText: pTittleButton,
-                    pWidth: pButtonWidth,
-                    pHeight: pButtonHeight,
-                    pButtonColor: theme.primary,
-                    pBorderColor: theme.primary,
-                    pTextStyle:
-                        KCustomTextStyle.kMedium(context, 22, Colors.white))
+                  pOnTap: () async {
+                    FocusScope.of(context).unfocus();
+                    if (isKeyboardVisible) {
+                      await KeyboardVisibilityController()
+                          .onChange
+                          .firstWhere((bool visible) => !visible);
+                    }
+                    pOnTap(pInfoCard);
+                  },
+                  pText: "Ver",
+                  pWidth: pButtonWidth,
+                  pHeight: pButtonHeight,
+                  pButtonColor: theme.primary,
+                  pBorderColor: theme.primary,
+                  pTextStyle:
+                      KCustomTextStyle.kMedium(context, 22, Colors.white),
+                  pSpacerWidth: pWidth * 0.02,
+                  pIconData: Icons.remove_red_eye_outlined,
+                  pIconColor: Colors.white,
+                )
               ],
             ),
           ));
     });
   }
 }
-
-

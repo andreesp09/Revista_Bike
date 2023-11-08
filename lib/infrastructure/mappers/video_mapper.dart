@@ -2,8 +2,9 @@ import 'package:revistabike_app/domain/entities/00-entities.dart';
 import 'package:revistabike_app/infrastructure/models/00-models.dart';
 
 class VideoMapper {
-  static Video videoToEntity(VideoResponse sponsorResponse) => Video(
-      idVideo: sponsorResponse.idVideo,
-      videoPath: sponsorResponse.videoPath,
-      available: sponsorResponse.available);
+  static Video videoToEntity(VideoResponse videoResponse) => Video(
+      idVideo: videoResponse.idVideo,
+      videoPath: videoResponse.videoPath,
+      available: videoResponse.available,
+      videoName: videoResponse.videoName);
 }

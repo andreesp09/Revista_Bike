@@ -30,3 +30,4 @@ export 'videos_providers/videos_repository_provider.dart';
 
 //! Hace referencia a las exportaciones de los riverpods de widgets
 export 'widgets_providers/custom_search_appbar.dart';
+export 'widgets_providers/youtube_video_player.dart';

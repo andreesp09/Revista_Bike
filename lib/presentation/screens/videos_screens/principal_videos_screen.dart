@@ -15,28 +15,39 @@ class PrincipalVideosScreen extends ConsumerWidget {
     final ColorScheme theme = Theme.of(context).colorScheme;
     final MaxSizePhone maxSizePhone = ref.watch(maxConstrainsProvider);
     final List<Video> videos = ref.watch(videosProvider);
+    final bool isPortraitScreen = ref.watch(isPortraitProvider);
+    final bool userCloseScreen = ref.watch(canClose);
 
     void returnVideoScreen() {
+      ref.read(canClose.notifier).update((state) => true);
       SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
       context.pop();
     }
 
     return Scaffold(
-      appBar: CustomAppBar(
-          pWidth: maxSizePhone.maxWidth * 0.15,
-          pHeight: maxSizePhone.maxHeight * 0.08,
-          pIconSize: maxSizePhone.maxHeight * 0.04,
-          pColor: theme.primary,
-          pOnTap: returnVideoScreen),
-      body: ListView.builder(
-        itemCount: videos.length,
-        itemBuilder: (BuildContext context, int index) {
-          final Video video = videos[index];
-          return YoutubeVideoPlayer(
-            videoPath: video.videoPath,
-          );
-        },
-      ),
+      appBar: isPortraitScreen
+          ? CustomAppBar(
+              pWidth: maxSizePhone.maxWidth * 0.15,
+              pHeight: maxSizePhone.maxHeight * 0.08,
+              pIconSize: maxSizePhone.maxHeight * 0.04,
+              pColor: theme.primary,
+              pOnTap: returnVideoScreen)
+          : null,
+      body: isPortraitScreen
+          ? ListView.builder(
+              itemCount: videos.length,
+              itemBuilder: (BuildContext context, int index) {
+                final Video video = videos[index];
+                return userCloseScreen
+                    ? Container()
+                    : PortraitYoutubeVideoPlayer(
+                        pVideo: video,
+                        pIndex: index,
+                      );
+              },
+            )
+          : LandscapeYoutubeVideoPlayer(
+              video: videos[ref.read(indexLandscapeVideoProvider)]),
     );
   }
 }

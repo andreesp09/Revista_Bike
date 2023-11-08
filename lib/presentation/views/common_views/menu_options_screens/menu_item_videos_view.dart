@@ -15,7 +15,10 @@ class MenuItemVideosView extends ConsumerWidget {
       pImageUrl: videosItemMenuImage,
       pTitle: 'Patrocinadores',
       pSubTitle: 'Ingrese para ver transmisiones relevantes',
-      pOnTap: () => context.push('/home-videos'),
+      pOnTap: () {
+        ref.read(canClose.notifier).update((state) => false);
+        context.push('/home-videos');
+      },
       pImageWidth: maxSizePhone.maxWidth * 0.6,
       pImageHeight: maxSizePhone.maxHeight * 0.5,
       pTextWidth: maxSizePhone.maxWidth * 0.8,

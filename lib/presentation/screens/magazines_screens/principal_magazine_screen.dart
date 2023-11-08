@@ -33,13 +33,14 @@ class PrincipalMagazineScreen extends ConsumerWidget {
 
     return Scaffold(
         appBar: CustomSearchAppBar(
-            pWidth: maxSizePhone.maxWidth * 0.15,
-            pHeight: maxSizePhone.maxHeight * 0.08,
-            pIconSize: maxSizePhone.maxHeight * 0.04,
-            pColor: theme.primary,
-            pDuration: 500,
-            pOnTap: returnPrincipalMenuOption,
-            pAppbarFilter: AppbarFilter.magazine),
+          pWidth: maxSizePhone.maxWidth * 0.15,
+          pHeight: maxSizePhone.maxHeight * 0.08,
+          pIconSize: maxSizePhone.maxHeight * 0.04,
+          pColor: theme.primary,
+          pDuration: 500,
+          pOnTap: returnPrincipalMenuOption,
+          pAppbarFilter: AppbarFilter.magazine,
+        ),
         body:
             //!Widget referente al listado de tarjetas con todos eventos
             SizedBox(
@@ -66,7 +67,6 @@ class PrincipalMagazineScreen extends ConsumerWidget {
                       pInfoCard: magazine,
                       pIndex: index,
                       pOnTap: selectMagazine,
-                      pTittleButton: 'Ver evento',
                     ));
               },
             ),

@@ -6,7 +6,7 @@ class AppViewsRoutes {
     return <Widget>[
       const MenuItemEventsView(),
       const MenuMagazinesEventsView(),
-      const MenuItemRoutesView(),
+      // const MenuItemRoutesView(),
       const MenuItemSponsorView(),
       const MenuItemVideosView()
     ];

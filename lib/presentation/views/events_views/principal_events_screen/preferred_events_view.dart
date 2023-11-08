@@ -17,6 +17,12 @@ class PreferredEventsView extends ConsumerWidget {
     int index = -1;
 
     void returnHomeEventPage() {
+      ref.read(filterEventsProvider.notifier).update((state) => ref
+          .read(eventsProvider)
+          .where((event) =>
+              event.modality == ref.read(selectedModalityProvider).name &&
+              event.isImportanEvent == true)
+          .toList());
       ref.read(filterEventsProvider.notifier).update((state) => []);
       ref.read(openSearchProvider.notifier).update((state) => false);
       ref.read(eventViewSelectedProvider.notifier).update((state) => 0);
@@ -73,7 +79,6 @@ class PreferredEventsView extends ConsumerWidget {
                   pInfoCard: event,
                   pIndex: index,
                   pOnTap: selectEvent,
-                  pTittleButton: 'Ver evento',
                 );
               },
             ),

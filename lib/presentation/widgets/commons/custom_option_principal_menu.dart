@@ -31,29 +31,33 @@ class CustomOptionPrincipalMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context).colorScheme;
-    return Column(children: [
-      GestureDetector(
-        onTap: () => pOnTap(),
-        child: _ImageContainer(
-            imageUrl: pImageUrl,
-            pImageWidth: pImageWidth,
-            pImageHeight: pImageHeight),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          GestureDetector(
+            onTap: () => pOnTap(),
+            child: _ImageContainer(
+                imageUrl: pImageUrl,
+                pImageWidth: pImageWidth,
+                pImageHeight: pImageHeight),
+          ),
+          CustomAutoSizeText(
+              pText: pSubTitle,
+              pPadding: 8,
+              pTextStyle: KCustomTextStyle.kLight(context, 35, Colors.black),
+              pWidth: pTextWidth,
+              pHeight: pTextHeight),
+          CustomButton(
+            pOnTap: pOnTap,
+            pText: "Ingresar",
+            pWidth: pButtonWidth,
+            pHeight: pButtonHeight,
+            pButtonColor: theme.primary,
+            pTextStyle: KCustomTextStyle.kMedium(context, 22, Colors.white),
+          )
+        ],
       ),
-      CustomAutoSizeText(
-          pText: pSubTitle,
-          pPadding: 8,
-          pTextStyle: KCustomTextStyle.kLight(context, 35, Colors.black),
-          pWidth: pTextWidth,
-          pHeight: pTextHeight),
-      CustomButton(
-        pOnTap: pOnTap,
-        pText: "Ingresar",
-        pWidth: pButtonWidth,
-        pHeight: pButtonHeight,
-        pButtonColor: theme.primary,
-        pTextStyle: KCustomTextStyle.kMedium(context, 22, Colors.white),
-      )
-    ]);
+    );
   }
 }
 
